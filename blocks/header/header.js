@@ -2,7 +2,7 @@ import { fetchPlaceholders, getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
 
 // media query match that indicates mobile/tablet width
-const isDesktop = window.matchMedia('(min-width: 900px)');
+const isDesktop = window.matchMedia('(min-width: 1024px)');
 
 function closeOnEscape(e) {
   if (e.code === 'Escape') {
@@ -203,8 +203,8 @@ export default async function decorate(block) {
   nav.prepend(hamburger);
   nav.setAttribute('aria-expanded', 'false');
   // prevent mobile nav behavior on window resize
-  //toggleMenu(nav, navSections, isDesktop.matches);
-  //isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
+  toggleMenu(nav, navSections, isDesktop.matches);
+  isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
 
   const navWrapper = document.createElement('div');
   navWrapper.className = 'nav-wrapper';
