@@ -354,11 +354,10 @@ header .nav-wrapper {
 
 	header nav#nav .nav-sections .default-content-wrapper > ul > li:nth-of-type(4) {
 		font-family: var(--accent-font);
-		text-transform: lowercase;
 		line-height: 1.5;
         letter-spacing: .025em;
 		font-size: 16px;
-		color: var(--black);
+		color: #4a4a4a;
 	}
   
 	header nav#nav .nav-sections .default-content-wrapper > ul > li {
