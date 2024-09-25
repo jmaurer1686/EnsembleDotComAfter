@@ -2,8 +2,8 @@
 
 
 ## Environments
-- Preview: Preview: https://main--spectrum--adobedevxsc.hlx.page/
-- Live: https://main--spectrum--adobedevxsc.hlx.live/
+- Preview: Preview: https://main--ensembledotcomafter--jmaurer1686.aem.page/
+- Live: https://main--ensembledotcomafter--jmaurer1686.aem.live/
 
 ## Installation
 
