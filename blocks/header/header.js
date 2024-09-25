@@ -183,15 +183,7 @@ export default async function decorate(block) {
   if (navSections) {
     navSections.querySelectorAll(':scope .default-content-wrapper > ul > li').forEach((navSection) => {
       if (navSection.querySelector('ul')) navSection.classList.add('nav-drop');
-      navSection.addEventListener('mouseenter', () => {
-        if (isDesktop.matches) {
-          const expanded = navSection.getAttribute('aria-expanded') === 'true';
-          toggleAllNavSections(navSections);
-          navSection.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-        }
-      });
-
-      navSection.addEventListener('mouseleave', () => {
+      navSection.addEventListener('click', () => {
         if (isDesktop.matches) {
           const expanded = navSection.getAttribute('aria-expanded') === 'true';
           toggleAllNavSections(navSections);
@@ -211,27 +203,13 @@ export default async function decorate(block) {
   nav.prepend(hamburger);
   nav.setAttribute('aria-expanded', 'false');
   // prevent mobile nav behavior on window resize
-  toggleMenu(nav, navSections, isDesktop.matches);
-  isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
+  //toggleMenu(nav, navSections, isDesktop.matches);
+  //isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
 
   const navWrapper = document.createElement('div');
-  navWrapper.className = 'header-nav-wrapper';
+  navWrapper.className = 'nav-wrapper';
   navWrapper.append(nav);
-
-
-  /* custom */
-  const navSectionsEl = navWrapper.querySelector('.nav-sections .default-content-wrapper');
-  navSectionsEl.insertAdjacentHTML('afterbegin', `
-    <div class="page-type"><span>Residential</span><span>Business</span></div>
-  `);
-
-  const topNav = navWrapper.querySelector('nav .section:last-of-type');
-  topNav.classList.add('top-nav');
-  const br = topNav.querySelector('br');
-  br.remove();
-  block.prepend(topNav);
   block.append(navWrapper);
-
 
   if (getMetadata('breadcrumbs').toLowerCase() === 'true') {
     navWrapper.append(await buildBreadcrumbs());
